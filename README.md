@@ -26,3 +26,5 @@ eg.
         return view('tasks.show', compact('task'));
     }
 ```
+Continue from here:
+[https://laracasts.com/series/laravel-from-scratch-2017/episodes/10](https://laracasts.com/series/laravel-from-scratch-2017/episodes/10)
