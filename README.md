@@ -6,6 +6,9 @@
 - Start `mysql` by running `brew services start mysql`
 - Run the app in your local by running `php artisan serve`
 
+### WIP:
+- Checkout form to handle submissions
+
 ### Tips:
 - `php artisan make:model Task -m`
     - This creates the model `Task`, but also creates a migration table
@@ -26,5 +29,4 @@ eg.
         return view('tasks.show', compact('task'));
     }
 ```
-Continue from here:
-[https://laracasts.com/series/laravel-from-scratch-2017/episodes/10](https://laracasts.com/series/laravel-from-scratch-2017/episodes/10)
+Continue from here: https://laracasts.com/series/laravel-from-scratch-2017/episodes/11?autoplay=true

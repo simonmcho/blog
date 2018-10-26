@@ -1,5 +1,5 @@
 @extends ('layout')
 
 @section ('content')
-POSTS!
+    {{ $priceList }}
 @endsection
