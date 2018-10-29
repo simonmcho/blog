@@ -11,4 +11,14 @@ class CheckoutController extends Controller
         $title = 'CHECKOUT!!';
         return view('checkout.index', compact('title'));
     }
+
+    public function create()
+    {
+        return view('checkout.create');
+    }
+
+    public function store ()
+    {
+        dd(request()->all());
+    }
 }

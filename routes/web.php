@@ -23,6 +23,8 @@ Route::get('/', function () {
 Route::get('/products', 'ProductsController@index');
 
 Route::get('/checkout', 'CheckoutController@index');
+Route::get('/checkout/create', 'CheckoutController@create');
+Route::post('/posts', 'CheckoutController@store');
 
 
 
