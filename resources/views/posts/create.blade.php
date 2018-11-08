@@ -9,22 +9,22 @@
 
     <form method="POST" action="/posts">
         {{ csrf_field() }}
-        
+
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name ="username" class="form-control" id="userName" placeholder="Username">
         </div>
         <div class="form-group">
             <label for="emailAddress">Email address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="email@gmail.com">
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="email@gmail.com" required>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
         </div>
         <div class="form-group">
             <label for="passwordConfirm">Confirm Password</label>
-            <input type="password" name="passwordConfirm" class="form-control" id="passwordConfirm" placeholder="Password">
+            <input type="password" name="passwordConfirm" class="form-control" id="passwordConfirm" placeholder="Password" required>
         </div>
         {{-- <div class="form-group">
             <label for="exampleInputFile">File input</label>
@@ -40,6 +40,9 @@
             <option value="buyer">Buyer</option>
             <option value="seller">Seller</option>
         </select>
+
+        @include ('layouts.errors')
+
         <button type="submit" class="btn">Create account!</button>
     </form>
 </div>
