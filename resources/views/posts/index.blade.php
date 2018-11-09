@@ -1,5 +1,9 @@
 @extends ('layout')
 
 @section ('content')
-POSTS!
+    <div class="col-sm-8">
+        @foreach ($posts as $post)
+            @include ('posts.account')
+        @endforeach
+    </div>
 @endsection

@@ -8,26 +8,38 @@ use App\Post;
 
 class PostsController extends Controller
 {
-    public function index ()
+    public function index()
     {
-        $title = 'POSTS!!!!';
+
+        $posts = Post::all();
         
-        return view('posts.index', compact('title'));
+        return view('posts.index', compact('posts'));
     }
 
-    public function create ()
+    // public function messages()
+    // {
+    //     return [
+    //         'username.required' => "You need to put a username!",
+    //         'email.required' => "You will probably need to put in an email.",
+    //         'password' => "Your password needs to be more secure. Right now it's less than 6 characters."
+    //     ];
+    // }
+
+    public function create()
     {
         return view('posts.create');
     }
 
-    public function store ()
+    public function store()
     {
         // dd(request()->all());
         // Create new post using req data and save to db
 
         $this->validate(request(), [
-            'username' => 'required',
-            'email' => 'required'
+            'username' => 'bail|required|unique:posts|max:255',
+            'email' => 'required|email|unique:posts',
+            'password' => 'required|min:6|confirmed',
+            'passwordConfirm' => 'required|min:6|confirmed'
         ]);
 
         Post::create([
