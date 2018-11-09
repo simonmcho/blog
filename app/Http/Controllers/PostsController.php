@@ -32,7 +32,6 @@ class PostsController extends Controller
 
     public function store()
     {
-        
         // dd(request()->all());
         // Create new post using req data and save to db
 
@@ -42,18 +41,11 @@ class PostsController extends Controller
             'password' => 'required|min:6|confirmed'
         ]);
 
-        // Post::create([
-        //     'username' => request('username'),
-        //     'email' => request('email'),
-        //     'password' => Hash::make(request('password')),
-        //     'passwordConfirm' => Hash::make(request('passwordConfirm'))
-        // ]);
-
         Post::create([
             'username' => request('username'),
             'email' => request('email'),
-            'password' => request('password'),
-            'password_confirmation' => request('password_confirmation')
+            'password' => Hash::make(request('password')),
+            'password_confirmation' => Hash::make(request('password_confirmation'))
         ]);
 
         // Redirect to home page
