@@ -11,11 +11,13 @@ class Post extends Model
 
     public function addReview($body)
     {
-        dd($this->reviews());
-         Review::create([
-            'post_id' => $this->id,
-            'user_id' => 123123,
-            'body' => $body
-        ]);
+        
+        $this->reviews()->create(compact('body'));
+
+        // Review::create([
+        //     'post_id' => $this->id,
+        //     'user_id' => 123123,
+        //     'body' => $body
+        // ]);
     }
 }

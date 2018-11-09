@@ -9,6 +9,7 @@ class ReviewsController extends Controller
 {
     public function store(Post $post_id)
     {
+        dd('hi');
         $post_id->addReview(request('body'));
        
         return back();
