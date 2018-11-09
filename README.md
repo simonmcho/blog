@@ -51,6 +51,11 @@ Route::get('/posts/{post_id}, 'PostsController@show');
     {{ method_field('PATCH') }}
 </form>
 ```
+- Understand the difference between calling methods on an instance of a some model class and retrieving the property with the same method name:
+- EG: `$someModel->reviews()` vs `$someModel->reviews`
+- The first returns the relationship object (eg. hasMany, etc)
+- The second returns the result of the relationship.
+- See [this](https://stackoverflow.com/questions/28223289/difference-between-method-calls-model-relation-and-model-relation) for explanation
 
 ### Form Submissions
 - Remember your `csrf` protection that Laravel provides. Prevents cross-site request foregeries so that unauthorized commands will not be performed while behind the mask of an authenticated user. [Read this](https://laravel.com/docs/5.7/csrf)
