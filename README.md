@@ -45,6 +45,12 @@ Route::get('/posts/{post_id}, 'PostsController@show');
         return $this->hasMany(Review::class);
     }
 ```
+- HTML form elements only understand `GET` and `POST` requests. So with laravel, you will need to to have a `method_field` method call within the element, and specify the specific request type that way:
+```
+<form method="POST" action="/posts/{{ $post->id }}/review">
+    {{ method_field('PATCH') }}
+</form>
+```
 
 ### Form Submissions
 - Remember your `csrf` protection that Laravel provides. Prevents cross-site request foregeries so that unauthorized commands will not be performed while behind the mask of an authenticated user. [Read this](https://laravel.com/docs/5.7/csrf)

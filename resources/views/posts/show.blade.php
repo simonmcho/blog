@@ -23,5 +23,20 @@
                 </ul>
             </div>
         @endif
+        
+        <br />
+        <div class="card">
+            <div class="card-block">
+            <form method="POST" action="/posts/{{ $post_id->id }}/comments">
+                    {{ method_field('PATCH') }}
+                    <div class="form-group">
+                        <textarea class="form-control" name="body" placeholder="Your review here"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Add Review!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
