@@ -1,6 +1,5 @@
 ## Laravel App Project
 
-
 ### How to get started:
 - Run `composer update` to update your packages
 - Start `mysql` by running `brew services start mysql`
@@ -30,7 +29,6 @@ eg.
         return view('tasks.show', compact('task'));
     }
 ```
-Continue from here: https://laracasts.com/series/laravel-from-scratch-2017/episodes/11?autoplay=true
 
 ### Form Submissions
 - Remember your `csrf` protection that Laravel provides. Prevents cross-site request foregeries so that unauthorized commands will not be performed while behind the mask of an authenticated user. [Read this](https://laravel.com/docs/5.7/csrf)
@@ -40,3 +38,8 @@ Continue from here: https://laracasts.com/series/laravel-from-scratch-2017/episo
     - Creating a `$guarded` variable is the inverse of fillable, which blacklists which values should not be accepted
     - The third way to do this is to create our own parent `Model` class, and declare either of the instance variables in there. That way, any classes that inherit `Model` will have that
 - In the `PostsController`, there is some minor validation using the `validate` method. However, we should not be validating submissions in the controller. TODO: Decouple form validation
+
+### Adding Reviews
+- Every Post can have one or many reviews. In other words, **A post has many reviews**.
+- Inversely, A review will belong to a post.
+Continue from here: https://laracasts.com/series/laravel-from-scratch-2017/episodes/15

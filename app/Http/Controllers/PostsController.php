@@ -32,21 +32,28 @@ class PostsController extends Controller
 
     public function store()
     {
+        
         // dd(request()->all());
         // Create new post using req data and save to db
 
         $this->validate(request(), [
             'username' => 'bail|required|unique:posts|max:255',
             'email' => 'required|email|unique:posts',
-            'password' => 'required|min:6|confirmed',
-            'passwordConfirm' => 'required|min:6|confirmed'
+            'password' => 'required|min:6|confirmed'
         ]);
+
+        // Post::create([
+        //     'username' => request('username'),
+        //     'email' => request('email'),
+        //     'password' => Hash::make(request('password')),
+        //     'passwordConfirm' => Hash::make(request('passwordConfirm'))
+        // ]);
 
         Post::create([
             'username' => request('username'),
             'email' => request('email'),
-            'pwdOriginal' => Hash::make(request('password')),
-            'pwdConfirm' => Hash::make(request('passwordConfirm'))
+            'password' => request('password'),
+            'password_confirmation' => request('password_confirmation')
         ]);
 
         // Redirect to home page

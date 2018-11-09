@@ -23,8 +23,8 @@
             <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
         </div>
         <div class="form-group">
-            <label for="passwordConfirm">Confirm Password</label>
-            <input type="password" name="passwordConfirm" class="form-control" id="passwordConfirm" placeholder="Password" required>
+            <label for="password_confirmation">Confirm Password</label>
+            <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Password" required>
         </div>
         {{-- <div class="form-group">
             <label for="exampleInputFile">File input</label>
