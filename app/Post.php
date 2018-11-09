@@ -8,4 +8,13 @@ class Post extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function addReview($body)
+    {
+         Review::create([
+            'post_id' => $this->id,
+            'user_id' => 123123,
+            'body' => $body
+        ]);
+    }
 }

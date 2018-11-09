@@ -27,8 +27,9 @@
         <br />
         <div class="card">
             <div class="card-block">
-            <form method="POST" action="/posts/{{ $post_id->id }}/comments">
-                    {{ method_field('PATCH') }}
+            <form method="POST" action="/posts/{{ $post_id->id }}/reviews">
+                    {{-- {{ method_field('PATCH') }} --}}
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <textarea class="form-control" name="body" placeholder="Your review here"></textarea>
                     </div>

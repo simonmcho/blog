@@ -34,4 +34,4 @@ Route::get('/posts', 'PostsController@index');
 Route::get('/posts/{post_id}', 'PostsController@show');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
-Route::post('/posts/{post_id}/reviews', 'CommentsController@store');
+Route::post('/posts/{post_id}/reviews', 'ReviewsController@store');
