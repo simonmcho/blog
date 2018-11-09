@@ -30,6 +30,11 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
+    public function show(Post $post_id)
+    {
+        return view('posts.show', compact('post_id'));
+    }
+
     public function store()
     {
         // dd(request()->all());

@@ -1,7 +1,7 @@
 <div class="account-container">
     <div class="account-user">
         <h1 class="account-user-name">
-            <a href="/posts/{{ $post->username}}" >
+            <a href="/posts/{{ $post->id }}" >
                 {{ $post->username }}
             </a>
         </h1>

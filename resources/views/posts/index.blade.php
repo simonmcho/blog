@@ -5,5 +5,6 @@
         @foreach ($posts as $post)
             @include ('posts.account')
         @endforeach
+
     </div>
 @endsection

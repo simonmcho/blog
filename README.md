@@ -24,9 +24,25 @@ Eg. `public function scopeGetIncompleted ($query)`. This allows `App\Task::getIn
 - Route Model Binding: Naming your wildcard in your route the same as the argument passed in the method used for the route allows Laravel to call specific query builder methods:
 eg. 
 ```
- public function show (Task $task) // $task is same as Task::find($id);
-    {        
-        return view('tasks.show', compact('task'));
+// Route
+Route::get('/posts/{post_id}, 'PostsController@show');
+
+// Controller
+ public function show(Post $post_id) 
+ {
+     return view('posts.show', compact('post_id'));
+ }
+
+// They would be the id that's incremental in the db
+```
+- Eloquent gives us methods such as `hasMany()`. You want to pass in the path of the Model that has the relationship to the Model you are calling the function from. Options are:
+    - Typing in the Model as a string: `App\Review`;
+    - Using static property: `Review::class`;
+- EG: 
+```
+    public function reviews() 
+    {
+        return $this->hasMany(Review::class);
     }
 ```
 
