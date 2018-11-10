@@ -17,7 +17,6 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->integer('post_id');
             $table->string('body');
-            $table->string('tester')->nullable();
             $table->timestamps();
         });
     }

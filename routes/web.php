@@ -31,7 +31,7 @@ Route::get('/checkout/create', 'CheckoutController@create');
 // Route::get('/tasks/{task}', 'TasksController@show');
 
 Route::get('/posts', 'PostsController@index');
-Route::get('/posts/{post_id}', 'PostsController@show');
 Route::get('/posts/create', 'PostsController@create');
+Route::get('/posts/{post_id}', 'PostsController@show');
 Route::post('/posts', 'PostsController@store');
 Route::post('/posts/{post_id}/reviews', 'ReviewsController@store');

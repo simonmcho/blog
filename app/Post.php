@@ -11,7 +11,7 @@ class Post extends Model
 
     public function addReview($body)
     {
-        
+        //dd(compact('body'));
         $this->reviews()->create(compact('body'));
 
         // Review::create([
