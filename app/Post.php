@@ -11,7 +11,9 @@ class Post extends Model
 
     public function addReview($body)
     {
-        //dd(compact('body'));
+        // $this->reviews() returns the hasMany relationship object
+        // $this->reviews returns the result of the relationship
+        // Getting the hasMany relationship object allows other eloquent methods to be called
         $this->reviews()->create(compact('body'));
 
         // Review::create([

@@ -31,7 +31,7 @@
                     {{-- {{ method_field('PATCH') }} --}}
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <textarea class="form-control" name="body" placeholder="Your review here"></textarea>
+                        <textarea class="form-control" name="body" placeholder="Your review here" required></textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Add Review!</button>
@@ -39,5 +39,7 @@
                 </form>
             </div>
         </div>
+
+        @include ('layouts.errors')
     </div>
 @endsection

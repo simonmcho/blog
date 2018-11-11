@@ -69,4 +69,12 @@ Route::get('/posts/{post_id}, 'PostsController@show');
 ### Adding Reviews
 - Every Post can have one or many reviews. In other words, **A post has many reviews**.
 - Inversely, A review will belong to a post.
+#### How do these reviews work?
+- Going to `/posts/{post_id}` in the URL returns `show.blade.php` due to the controller
+- This view contains the form that has a `post` method and has actions to `/posts/{post_id}/reviews`
+- This is managed by the `ReviewsController`'s `store` method. It takes the `post_id` param (How does this become the post object of that specific post?)
+- It calls the `addReview` method that lives in the `Post` model.
+- This in turn allows the review associated with the post to be created
+
+
 Continue from here: https://laracasts.com/series/laravel-from-scratch-2017/episodes/15
