@@ -56,6 +56,13 @@ Route::get('/posts/{post_id}, 'PostsController@show');
 - The first returns the relationship object (eg. hasMany, etc)
 - The second returns the result of the relationship.
 - See [this](https://stackoverflow.com/questions/28223289/difference-between-method-calls-model-relation-and-model-relation) for explanation
+- [For user auth](https://laracasts.com/series/laravel-from-scratch-2017/episodes/17)
+- To update migrations, create a new migration using `php artisan make:migration name_of_updating_migration`
+    - Migrate the new migration files to update your database
+- We need to start adding user registration and login authentication
+    - This means we need more controllers and methods
+    - One good best practice is to feel out/determine whether your controller is getting too big and create unique controllers. A good indicator of this is if the controller has more than the usual methods of `create`, `store`, `show`, `delete`, `update`, etc
+
 
 ### Form Submissions
 - Remember your `csrf` protection that Laravel provides. Prevents cross-site request foregeries so that unauthorized commands will not be performed while behind the mask of an authenticated user. [Read this](https://laravel.com/docs/5.7/csrf)
@@ -75,6 +82,11 @@ Route::get('/posts/{post_id}, 'PostsController@show');
 - This is managed by the `ReviewsController`'s `store` method. It takes the `post_id` param (How does this become the post object of that specific post?)
 - It calls the `addReview` method that lives in the `Post` model.
 - This in turn allows the review associated with the post to be created
+
+### Users
+- users table already migrated due to boilerplate
+- Manually saved a user...use `bcrypt` method to encapsulate password in order to save it as an encrypted password in the db
+- 
 
 
 Continue from here: https://laracasts.com/series/laravel-from-scratch-2017/episodes/15

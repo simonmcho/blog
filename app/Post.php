@@ -4,12 +4,12 @@ namespace App;
 
 class Post extends Model
 {
-    public function reviews()
+    public function reviews() // A post has many reviews
     {
         return $this->hasMany(Review::class);
     }
 
-    public function addReview($body)
+    public function addReview($body) // On a post, you can add a review
     {
         // $this->reviews() returns the hasMany relationship object
         // $this->reviews returns the result of the relationship
@@ -21,5 +21,11 @@ class Post extends Model
         //     'user_id' => 123123,
         //     'body' => $body
         // ]);
+    }
+
+    // $review->post->user (??)
+    public function user() // A post belongs to a user 
+    {
+        return $this->belongsTo(User::class);
     }
 }

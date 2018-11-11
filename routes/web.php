@@ -35,3 +35,6 @@ Route::get('/posts/create', 'PostsController@create');
 Route::get('/posts/{post_id}', 'PostsController@show');
 Route::post('/posts', 'PostsController@store');
 Route::post('/posts/{post_id}/reviews', 'ReviewsController@store');
+
+Route::get('/register', 'RegistrationController@create');
+Route::get('/login', 'SessionsController@create');
