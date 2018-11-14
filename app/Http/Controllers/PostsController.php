@@ -8,6 +8,11 @@ use App\Post;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
 
@@ -50,7 +55,8 @@ class PostsController extends Controller
             'username' => request('username'),
             'email' => request('email'),
             'password' => Hash::make(request('password')),
-            'password_confirmation' => Hash::make(request('password_confirmation'))
+            'password_confirmation' => Hash::make(request('password_confirmation')),
+            'user_id' => auth()->user()
         ]);
 
         // Redirect to home page

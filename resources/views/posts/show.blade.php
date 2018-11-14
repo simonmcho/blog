@@ -1,4 +1,4 @@
-@extends ('layout')
+@extends ('layouts.layout')
 
 @section ('content')
     <div class="col-sm-8 blog-main">
@@ -41,5 +41,10 @@
         </div>
 
         @include ('layouts.errors')
+    </div>
+
+    <div class="col-sm-8 blog-pagination">
+        <a href="#" class="btn btn-outline-primary">Older</a>
+        <a href="#" class="btn btn-outline-secondary disabled">Newer</a>
     </div>
 @endsection

@@ -1,4 +1,4 @@
-@extends ('layout')
+@extends ('layouts.layout')
 
 @section ('content')
 <form class="form-signin" method="POST" action="/posts">

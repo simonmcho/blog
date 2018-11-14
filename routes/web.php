@@ -17,7 +17,7 @@ Route::get('/', function () {
     $tasks = DB::table('tasks')->get(); // returning a database query from a route, laravel casts that into JSON
 
     return view('welcome', compact('name', 'tasks'));
-});
+})->name('home');
 
 
 Route::get('/products', 'ProductsController@index');
@@ -37,4 +37,6 @@ Route::post('/posts', 'PostsController@store');
 Route::post('/posts/{post_id}/reviews', 'ReviewsController@store');
 
 Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
 Route::get('/login', 'SessionsController@create');
+Route::post('/logout', 'SessionsController@destroy')->name('logout');

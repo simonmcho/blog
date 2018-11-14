@@ -1,4 +1,4 @@
-@extends ('layout')
+@extends ('layouts.layout')
 
 @section ('content')
 <div class="col-md-8 order-md-1">

@@ -17,6 +17,7 @@
 - `php artisan tinker` allows you to tinker around your php application using php. (Eg. `App\Post::all()` will retrieve all data from the db)
 
 ### Good to knows for beginners:
+- Continue from 13:39[here](https://laracasts.com/series/laravel-from-scratch-2017/episodes/19):
 - Using `Eloquent` allows us to extend the `Model` class, which has methods wrapped around query builders.
 Eg. `$task = Task::find($id);` - The `find($id)` comes from the inheritance of the `Model` class
 - We also added a static function by using a keyword `scope` in our function, rather than `static`. This lets Laravel know that the function is within the scope of the class:
@@ -86,7 +87,6 @@ Route::get('/posts/{post_id}, 'PostsController@show');
 ### Users
 - users table already migrated due to boilerplate
 - Manually saved a user...use `bcrypt` method to encapsulate password in order to save it as an encrypted password in the db
-- 
-
-
-Continue from here: https://laracasts.com/series/laravel-from-scratch-2017/episodes/15
+- Created views for the view layer
+- Validated, created, saved, and logged in user upon successful registration in the `RegistrationController@store` method
+- Logged out user in the `SessionsController@destroy` method
