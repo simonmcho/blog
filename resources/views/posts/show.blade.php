@@ -4,7 +4,7 @@
     <div class="col-sm-8 blog-main">
         <h1>{{ $post_id->username }}</h1>
         <p>{{ $post_id->email }}</p>
-
+        <p>{{ $post_id->user->name }}</p>
         <hr>
 
         @if (count($post_id->reviews))

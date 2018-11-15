@@ -22,7 +22,7 @@
 Eg. `$task = Task::find($id);` - The `find($id)` comes from the inheritance of the `Model` class
 - We also added a static function by using a keyword `scope` in our function, rather than `static`. This lets Laravel know that the function is within the scope of the class:
 Eg. `public function scopeGetIncompleted ($query)`. This allows `App\Task::getIncompleted()->where('id','>','2')->get();`
-- Route Model Binding: Naming your wildcard in your route the same as the argument passed in the method used for the route allows Laravel to call specific query builder methods:
+- Route Model Binding: Naming your wildcard in your route the same as the argument passed in the method used for the route allows Laravel to call specific query builder methods. **YOUR WILDCARD FOR YOUR MODEL OBJECT NEEDS TO BE APPENDED WITH AN UNDERSCORE** (eg. `post_id`, `service_id`): 
 eg. 
 ```
 // Route
@@ -90,3 +90,22 @@ Route::get('/posts/{post_id}, 'PostsController@show');
 - Created views for the view layer
 - Validated, created, saved, and logged in user upon successful registration in the `RegistrationController@store` method
 - Logged out user in the `SessionsController@destroy` method
+
+### Connecting Posts to its users. Reviews to its posts. Attaching review's users to reviews.
+#### Upon creating reviews
+1. Create review on a post. We know the post id due to the wild card passed in the endpoint.
+    - eg: `Route::post('/posts/{post_id}/reviews', 'ReviewsController@store');`
+2. The store method in `ReviewsController` does the following:
+    - Validates the inputs using Eloquent's `validate` method
+    - Call the `addReview` method that exists in `Post` model
+    - After review is added to the `Post` model, takes user back a page to where the review is
+3. The `addReview` method is important here.
+    - It grabs the logged in user's id via `Auth::user()->id` (`Illuminate\Support\Facade\Auth`)
+    - Calls its own class' `reviews` method, which returns the `hasMany` relationship object.
+    - Because the relationship object is available, it can call the inherited method `create` from `Model` 
+4. In the views of `show.blade.php`, we can accurately present post, the user of the post, reviews associated with the post, and the user who wrote the review:
+    - post ID comes from the wildcard from the routes. 
+        - When showing all posts, it loops through each post and adds it to the link href, so we get the post_id this way
+    - In the `Post` model, we defined a `user` method that returns the `belongsTo` relationship. We can accurately grab the user associated to the post
+    - In the `Review` model, we defined a `user` method that returns the `belongsTo` relationship. We can accurately grab the user associated to the review
+        - Because we have assigned a foreign key of the logged in user's id who is creating the review, we know that is the correct user for the review

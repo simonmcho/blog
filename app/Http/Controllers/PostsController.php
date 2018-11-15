@@ -44,7 +44,6 @@ class PostsController extends Controller
     {
         // dd(request()->all());
         // Create new post using req data and save to db
-
         $this->validate(request(), [
             'username' => 'bail|required|unique:posts|max:255',
             'email' => 'required|email|unique:posts',

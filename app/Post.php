@@ -11,6 +11,7 @@ class Post extends Model
 
     public function addReview($body) // On a post, you can add a review
     {
+        
         // $this->reviews() returns the hasMany relationship object
         // $this->reviews returns the result of the relationship
         // Getting the hasMany relationship object allows other eloquent methods to be called
