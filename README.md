@@ -189,3 +189,8 @@ class AppServiceProvider extends ServiceProvider
 }
 
 ```
+
+### Unit Testing
+- Check out the `tests` directory in a basic laravel app. 
+- We can run each test php file by running `vendor/bin/phpunit tests/Features/ExampleTest.php`
+    - Ensure `vendor/bin` is in your path in your machine
