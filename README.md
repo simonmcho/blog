@@ -109,3 +109,83 @@ Route::get('/posts/{post_id}, 'PostsController@show');
     - In the `Post` model, we defined a `user` method that returns the `belongsTo` relationship. We can accurately grab the user associated to the post
     - In the `Review` model, we defined a `user` method that returns the `belongsTo` relationship. We can accurately grab the user associated to the review
         - Because we have assigned a foreign key of the logged in user's id who is creating the review, we know that is the correct user for the review
+
+### Login/Logout
+- Generally called `SessionsController`, where it usually has `create` (show login page), `store` (login post request), and `destroy` (logout) methods
+- Using `Auth::attempt()` function to authenticate user
+- Using constructor the determine which endpoints to show logged out user vs loggedin user
+```
+class SessionsController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => 'destroy']); // Only guests will see non-authenticated endpoints
+    }
+    // Show page for user to login
+    public function create(): object
+    {
+        return view('sessions.create');
+    }
+
+    // Login user
+    public function store(): object
+    {
+        // Attempt to authenticate user
+        if (!Auth::attempt(request(['username', 'password']))) {
+            return back()->withErrors([
+                'message' => 'Your credentials did not match, please try again!'
+            ]);
+            // Not authenticated, redirect back
+        } else {
+            return redirect()->home(); // Authenticated, redirect to home
+        }
+    }
+
+    // Logout user
+    public function destroy(): object
+    {
+        Auth::logout();
+        
+        return redirect()->home();
+    }
+}
+```
+
+### Using view composers
+- Essentially, we can use service providers to listen for rendering of views specified, and hook into said rendering with additional data
+- Laravel by default provides basic templates for service providers. We can use something like this to say "When `layouts.sidebar` is loaded, load it with `archives`". :
+```
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // We can hook into when any view is loaded
+        view()->composer('layouts.sidebar', function ($view) {
+            $view->with('archives', \App\Service::archives());
+        });
+
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+}
+
+```
